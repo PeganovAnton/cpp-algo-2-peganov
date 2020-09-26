@@ -10,5 +10,6 @@ int main() {
     }
     list_print(intList, std::cout);
     std::cout << std::endl;
+    std::cout << intList.end->data << "\n";
     list_destroy(intList);
 }

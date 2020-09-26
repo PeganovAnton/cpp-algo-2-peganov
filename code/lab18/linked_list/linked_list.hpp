@@ -17,6 +17,7 @@ template<typename DataType>
 struct List {
     tNode<DataType> *begin;
     int size;
+    tNode<DataType> *end;
 };
 
 template<typename DataType>
@@ -24,6 +25,7 @@ void list_init(List<DataType> &lst)
 {
     lst.begin = nullptr;
     lst.size = 0;
+    lst.end = nullptr;
 }
 
 template<typename DataType>
@@ -39,7 +41,10 @@ template<typename DataType>
 void list_insert(List<DataType> &lst, const DataType &value)
 {
     lst.size += 1;
-    lst.begin = insert_node(lst.begin, value);
+    tNode<DataType> *n = insert_node(lst.begin, value);
+    if (!lst.end)
+      lst.end = n;
+    lst.begin = n;
 }
 
 template<typename DataType>
